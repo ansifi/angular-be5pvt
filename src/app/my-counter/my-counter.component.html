@@ -1,0 +1,19 @@
+<button id="increment" (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button id="decrement" (click)="decrement()">Decrement</button>
+
+<button id="reset" (click)="reset()">Reset Counter</button>
+
+<form #minmessage="ngForm" (ngSubmit)="onClickSubmit(minmessage.value)"> 
+  <br/> 
+  <p>Enter Minmessage Parameter to update Device Simulator</p>
+  <input type="number" name="minmessage" placeholder="Numbers only" ngModel> 
+  
+  <input type="submit" value="submit"> 
+</form>
+<!-- 
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://github.com/ngrx/platform
+-->
