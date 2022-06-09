@@ -1,32 +1,23 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { increment, decrement, reset, updateValue } from '../counter.actions';
-import * as fromCounter from '../counter.reducer';
 
-export interface State {
-  counter: fromCounter.State;
-}
+import { increment, decrement, reset, update } from '../counter.actions';
+
+import { State } from '../counter.index';
+import { count } from '../counter.selectors';
 
 @Component({
   selector: 'app-my-counter',
   templateUrl: './my-counter.component.html',
 })
+
 export class MyCounterComponent {
   count$: Observable<number>;
 
-  constructor(
-    private store: Store<State>
-  ) {
-   
+  constructor(private store: Store<State>) {
+    this.count$ = this.store.pipe(select(count))
   }
-
-  ngOnInit() {
-    this.count$ = this.store.pipe(select(state => state.counter.count));
-  }
-  // constructor(private store: Store<{ count: number }>) {
-  //   this.count$ = //this.store.pipe(select(state => state.count));
-  // }
 
   increment() {
     this.store.dispatch(increment());
@@ -36,13 +27,12 @@ export class MyCounterComponent {
     this.store.dispatch(decrement());
   }
 
-  onClickSubmit(result) {
-    console.log('Entered value is : ' + result.minmessage);
-    this.store.dispatch(updateValue(result.minmessage));
-  }
-
   reset() {
     this.store.dispatch(reset());
+  }
+
+  update(value: number) {
+    this.store.dispatch(update(value));
   }
 }
 

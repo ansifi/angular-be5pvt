@@ -8,12 +8,21 @@ import { counterReducer } from './counter.reducer';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { FormsModule } from '@angular/forms';
 
+import { reducers } from './counter.index';
+
 @NgModule({
   declarations: [AppComponent, MyCounterComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    StoreModule.forRoot({ count: counterReducer }),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictActionSerializability: true,
+        strictStateImmutability: true,
+        strictStateSerializability: true
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
