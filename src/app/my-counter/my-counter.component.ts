@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { increment, decrement, reset, update, updateValue } from '../../counter/counter.actions';
+import { increment, decrement, reset, update, updateValue } from '../counter/counter.actions';
 
-import { State } from '../../counter/counter.index';
-import { count } from '../../counter/counter.selectors';
+import { State } from '../counter/counter.index';
+import { count } from '../counter/counter.selectors';
 
 @Component({
   selector: 'app-my-counter',
