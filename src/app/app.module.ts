@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter.reducer';
+import { counterReducer } from '../counter/counter.reducer';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { FormsModule } from '@angular/forms';
 
-import { reducers } from './counter.index';
+import { reducers } from '../counter/counter.index';
 
 @NgModule({
   declarations: [AppComponent, MyCounterComponent],

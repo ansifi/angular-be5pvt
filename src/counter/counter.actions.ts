@@ -8,3 +8,8 @@ export const update = createAction(
   '[Counter Component] Update value',
   (value = 0) => ({ payload: { value } })
 );
+
+export const updateValue = createAction(
+  '[Counter Component] Update value',
+  (value = 0) => ({ payload: { value } })
+);
