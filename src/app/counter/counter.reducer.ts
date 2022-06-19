@@ -14,7 +14,7 @@ const reducer = createReducer(
   on(updateValue, (state, { payload }) => {
     return {
       ...state,
-      count: payload.value
+      count: state.count + payload.value
     }
   })
 );
