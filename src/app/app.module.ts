@@ -7,22 +7,27 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter/counter.reducer';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { FormsModule } from '@angular/forms';
-
 import { reducers } from './counter/counter.index';
+import { NgrxFormsModule } from "ngrx-forms";
+import { FormComponent } from './form/form.component';
+import { reducer } from "./form/form.reducer";
 
 @NgModule({
-  declarations: [AppComponent, MyCounterComponent],
+  declarations: [AppComponent, MyCounterComponent, FormComponent],
   imports: [
     BrowserModule,
+    StoreModule.forFeature('simpleForm', reducer),
+    StoreModule.forRoot({ form: reducer }),
+    NgrxFormsModule,
     FormsModule,
-    StoreModule.forRoot(reducers, {
-      runtimeChecks: {
-        strictActionImmutability: true,
-        strictActionSerializability: true,
-        strictStateImmutability: true,
-        strictStateSerializability: true
-      }
-    })
+    // StoreModule.forRoot(reducers, {
+    //   runtimeChecks: {
+    //     strictActionImmutability: true,
+    //     strictActionSerializability: true,
+    //     strictStateImmutability: true,
+    //     strictStateSerializability: true
+    //   }
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent],
